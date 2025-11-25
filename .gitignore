@@ -1,0 +1,40 @@
+# ======================
+#  SurvieInteract Broker - .gitignore
+# ======================
+
+# Config sensibles
+.env
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual env
+venv/
+env/
+.venv/
+
+# Logs
+*.log
+
+# OS junk files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# VSCode settings
+.vscode/
+
+# PyCharm / JetBrains
+.idea/
+
+# Mypy / Pyright / Ruff caches (si un jour tu utilises)
+.mypy_cache/
+.pyright/
+ruff_cache/
+
+# Local dev artifacts
+*.tmp
+*.bak
