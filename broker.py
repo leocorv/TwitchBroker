@@ -63,8 +63,11 @@ def publish_to_mod(event_type: str, event_name: str, value=None):
         s.send(data.encode())
         s.close()
         print(f"[BROKER] Sent → {payload}")
-    except Exception:
-        print(f"[BROKER] Mod offline, ignored → {payload}")
+    except Exception as e:
+        # VERSION QUI N’IGNORE PAS L’ÉVÈNEMENT
+        print(f"[BROKER] Failed to send (mod offline?) → {payload}")
+        print(f"[ERROR] {e}")
+        # Pas de “ignore”, tu logs seulement.
 
 
 # ===========================
