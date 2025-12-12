@@ -92,16 +92,17 @@ async def on_follow(data):
     publish_to_mod("follow", "new_follower", follower)
 
 
-# Subscription (tier1/2/3 + prime)
+# Subscription (NOUVEAU SUB, non gift)
 async def on_sub(data):
     ev = data.event
-    publish_to_mod("sub", "new_sub", {
+    publish_to_mod("sub", "new", {
         "user": ev.user_name,
-        "tier": ev.tier
+        "tier": ev.tier,
+        "is_gift": ev.is_gift,  # true si c'est un sub reçu via gift
     })
 
 
-# Re-sub
+# Re-sub (message de resub)
 async def on_resub(data):
     ev = data.event
     publish_to_mod("sub", "resub", {
@@ -111,13 +112,16 @@ async def on_resub(data):
     })
 
 
-# Sub gifted
+# Sub gifted (gift bundle)
 async def on_sub_gift(data):
     ev = data.event
+    gifter = ev.user_name  # peut être None
     publish_to_mod("sub", "gift", {
-        "gifter": ev.user_name,
-        "recipient": ev.recipient_user_name,
-        "tier": ev.tier
+        "gifter": gifter,
+        "total": ev.total,
+        "tier": ev.tier,
+        "cumulative_total": ev.cumulative_total,
+        "is_anonymous": ev.is_anonymous
     })
 
 
