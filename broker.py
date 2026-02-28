@@ -77,12 +77,19 @@ def publish_to_mod(event_type: str, event_name: str, value=None):
 # Points de chaîne (custom reward)
 async def on_points_redeem(data):
     ev = data.event
-    title = ev.reward.title
+    title_raw = ev.reward.title
     user = ev.user_name
+
+    # on normalise le titre côté broker
+    title_norm = _norm(title_raw)
+
+    print(f"[BROKER] Points raw='{title_raw}'  norm='{title_norm}'")
+
     publish_to_mod("points", "reward_redeem", {
         "user": user,
-        "reward": title
+        "reward": title_norm
     })
+
 
 
 # Follow
@@ -95,7 +102,7 @@ async def on_follow(data):
 # Subscription (NOUVEAU SUB, non gift)
 async def on_sub(data):
     ev = data.event
-    publish_to_mod("sub", "new", {
+    publish_to_mod("sub", "new_sub", {
         "user": ev.user_name,
         "tier": ev.tier,
         "is_gift": ev.is_gift,  # true si c'est un sub reçu via gift
