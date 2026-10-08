@@ -1,5 +1,19 @@
 # TwitchBroker
 
+## Prototype MCBOT (Linux)
+
+Le socle expérimental de contrôle collectif du personnage se trouve dans `mcbot/`.
+Il calcule les intentions à partir de lots glissants de commandes, avec des axes
+simultanés et arrêt des mouvements après expiration. Il n'est pas encore connecté
+au chat ni au client Minecraft. Voir [l'architecture et la démo](docs/mcbot-linux.md).
+
+```bash
+python3 -m unittest discover -s tests -v
+python3 -m mcbot < examples/control.jsonl
+```
+
+## Broker d'événements existant
+
 Script Python chargé de convertir les événements Twitch (EventSub WebSocket) en messages JSON envoyés à un mod Minecraft Fabric via TCP.
 
 ## Objectif

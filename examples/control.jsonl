@@ -1,0 +1,8 @@
+{"type":"message","at":0,"user":"alice","id":"1","text":"w right hit slot3 sprint"}
+{"type":"message","at":0,"user":"bob","id":"2","text":"w right"}
+{"type":"message","at":0,"user":"charlie","id":"3","text":"s left"}
+{"type":"tick","at":0}
+{"type":"tick","at":0.1}
+{"type":"message","at":0.8,"user":"alice","id":"4","text":"w"}
+{"type":"tick","at":0.8}
+{"type":"tick","at":3.8}
